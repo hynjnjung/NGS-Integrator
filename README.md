@@ -70,3 +70,8 @@ The output will be a bedGraph file of the same format (`chr start end cMBF`) and
 - Default zero: 
 - If you have multiple separated regions of the same chromosome, please place them into separate files to run the Calculator (Part One).
 - NGS-IT requires open memory (at least 8GB, depending on window size). Running NGS-IT when low on space may cause errors such as `Improper file formatting` error.
+
+
+## Questions/Issues?
+Please contact us [here](https://esbl.nhlbi.nih.gov/contact.html) for any questions or bug reporting.
+
