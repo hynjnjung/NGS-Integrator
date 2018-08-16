@@ -8,7 +8,7 @@ This is **NOT** a peak-calling algorithm as it does not specifically locate peak
 (though you can use a peak-calling tools on the output!).
 
 ### Installation
-You can download the .jar file from the Epithelial Systems Biology Laboratory website [here](https://esbl.nhlbi.nih.gov/Bioinformatic%20Tools.htm). Move the .jar file to your working folder, and follow the run steps below!
+You can download the .jar file from the Epithelial Systems Biology Laboratory website [here](https://esbl.nhlbi.nih.gov/NGS-IT/). Move the .jar file to your working folder, and follow the run steps below!
 
 **Requires: Java 1.7**
 
