@@ -21,8 +21,16 @@ For each chromosome file, the program uses a "moving window" to calculate the cM
 ### Input file
 NGS-IT takes as input a *sorted* BED file of sequence read counts (generated standard tools, such as *samtools* (depth), 
 *bedtools* (coverage, genomecov), etc.)
-The input file (bed file format) should contain the following (whitespace/tab separated) columns:
+The input file (bed file format) should contain the following (whitespace/tab separated) columns, and each region should be adjacent within the chromosome.
 `chr  start end read_count`
+
+For example,
+
+```
+chr1	0	10	0
+chr1	10	20	1
+chr1	20	30	1
+```
 
 The commandline options for changing the parameters are as below:
 ```
@@ -36,13 +44,12 @@ The commandline options for changing the parameters are as below:
 ```
 
 ### Run
-`java -jar NGS-IT.jar -i [Input.bed] -w 10000 [other options]`
+`java -jar NGS-IT.jar -i [Input.bed] -o [out_BaseName] -w [10000] [other options]`
 
 ### Output
-This part produces a directory of chromosome bedGraph files with the calculated cMBFs.
-The files have the following tab-separated format, `chr start end cMBF`, and include headers identifying the file as a bedGraph file 
-(see the [UCSC bedGraph Format](https://genome.ucsc.edu/goldenpath/help/bedgraph.html)).
-The directory also includes a final bedGraph file that concatenates all chromosomes in the order of the given file.
+This part produces a directory of chromosome-separated BED files of the calculated cMBFs.
+The files have the following tab-separated format, `chr start end cMBF` (see the [UCSC bedGraph Format](https://genome.ucsc.edu/goldenpath/help/bedgraph.html)).
+The directory also includes a final concatenated BED file of all chromosomes in the order of the given file.
 
 
 
@@ -51,25 +58,25 @@ The second part of the NGS-IT program **integrates** the calculated cMBFs for th
 by multiplying the cMBF at each position.
 
 ### Input file
-Inputs should be Part One generated files, or have the same format (`chr start end cMBF`).
+Inputs should be Part One generated files, or have the same format (`chr start end cMBF`) (BED files).
 An output filename also needs to included as the **first** input.
 The inputs should be ordered as follows:
 `chr start end cMBF`
 
 ### Run
-`java -cp NGS-IT.jar Integrator [Integration_Output_File_Name.bedGraph] [file1.bedGraph] [file2.bedGraph] ...`
+`java -cp NGS-IT.jar Integrator [Integration_Output_File_Name.bed] [file1.bed] [file2.bed] ...`
 
 ### Output
-The output will be a bedGraph file of the same format (`chr start end cMBF`) and of the specified name.
+The output will be a BED file of the same format (`chr start end cMBF`) and of the specified name.
 
 
 
 ## Things to Consider
-- Window size: Larger is more accurate, but will take longer and requires more memory.
+- Window size: Larger is more accurate, but will take longer and requires more memory. 
 - Median multiple: Generally, a larger median multiple will reduce the background level, but may also reduce signal.
 - Default zero: 
 - If you have multiple separated regions of the same chromosome, please place them into separate files to run the Calculator (Part One).
-- NGS-IT requires open memory (at least 8GB, depending on window size). Running NGS-IT when low on space may cause errors such as `Improper file formatting` error.
+- NGS-IT requires open memory (generally at least 8GB, depending on window size). Running NGS-IT when low on space may cause errors such as `Improper file formatting` error.
 
 
 ## Questions/Issues?
