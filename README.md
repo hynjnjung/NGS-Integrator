@@ -1,6 +1,5 @@
-# NGS-IT
-NGS Integrator Tool (NGS-IT) is a Java-based tool that integrates multiple genome-wide NGS data via the minimum Bayes' Factor 
-from density of sequence reads mapped on the genome. To integrate multiple NGS data, homogeneous replicates or 
+# NGS-Integrator
+NGS Integrator Tool (NGS-Integrator) is a Java-based tool that integrates multiple genome-wide NGS data via the minimum Bayes' Factor from density of sequence reads mapped on the genome. To integrate multiple NGS data, homogeneous replicates or 
 heterogeneous NGS data can be integrated into the single data track based on the complements of the minimum Bayes factor (*cMBF*)
 (range: 0-1) calculated from signal-to-background ratios as a function of genomic position.
 
@@ -8,19 +7,18 @@ This is **NOT** a peak-calling algorithm as it does not specifically locate peak
 (though you can use a peak-calling tools on the output!).
 
 ### Installation
-You can download the .jar file from the Epithelial Systems Biology Laboratory website [here](https://esbl.nhlbi.nih.gov/NGS-IT/). Move the .jar file to your working folder, and follow the run steps below!
+You can download the .jar file from the Epithelial Systems Biology Laboratory website [here](https://esbl.nhlbi.nih.gov/NGS-Integrator/). Move the .jar file to your working folder, and follow the run steps below!
 
 **Requires: Java 1.7**
 
 
 ## Part 1: Calculation of the complement of minimum Bayes' Factor (Calculator)
-The first NGS-IT program **calculates** the cMBF for each position for later integration. 
+The first NGS-Integrator program **calculates** the cMBF for each position for later integration. 
 It first splits a given genome/chromosome file into a directory of separate chromosomes to facilitate parallelizing computation. 
 For each chromosome file, the program uses a "moving window" to calculate the cMBF.
 
 ### Input file
-NGS-IT takes as input a *sorted* BED file of sequence read counts (generated standard tools, such as *samtools* (depth), 
-*bedtools* (coverage, genomecov), etc.)
+NGS-Integrator takes as input a *sorted* BED file of sequence read counts (generated standard tools, such as *samtools* (depth), *bedtools* (coverage, genomecov), etc.)
 The input file (bed file format) should contain the following (whitespace/tab separated) columns, and each region should be adjacent within the chromosome.
 `chr  start end read_count`
 
@@ -54,7 +52,7 @@ The directory also includes a final concatenated BED file of all chromosomes in 
 
 
 ## Part Two: Integration (Integrator)
-The second part of the NGS-IT program **integrates** the calculated cMBFs for the different tracks 
+The second part of the NGS-Integrator program **integrates** the calculated cMBFs for the different tracks 
 by multiplying the cMBF at each position.
 
 ### Input file
@@ -76,7 +74,7 @@ The output will be a BED file of the same format (`chr start end cMBF`) and of t
 - Median multiple: Generally, a larger median multiple will reduce the background level, but may also reduce signal.
 - Default zero: 
 - If you have multiple separated regions of the same chromosome, please place them into separate files to run the Calculator (Part One).
-- NGS-IT requires open memory (generally at least 8GB, depending on window size). Running NGS-IT when low on space may cause errors such as `Improper file formatting` error.
+- NGS-Integrator requires open memory (generally at least 8GB, depending on window size). Running NGS-Integrator when low on space may cause errors such as `Improper file formatting` error.
 
 
 ## Questions/Issues?
