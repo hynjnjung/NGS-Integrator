@@ -9,7 +9,7 @@ This is **NOT** a peak-calling algorithm as it does not specifically locate peak
 ### Installation
 You can download the .jar file from the Epithelial Systems Biology Laboratory website [here](https://esbl.nhlbi.nih.gov/NGS-Integrator/). Move the .jar file to your working folder, and follow the run steps below!
 
-**Requires: Java 1.7**
+**Requires: Java 1.7 or higher**
 
 
 ## Part 1: Calculation of the complement of minimum Bayes' Factor (Calculator)
