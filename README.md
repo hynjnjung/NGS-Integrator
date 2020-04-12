@@ -1,7 +1,7 @@
 # NGS-Integrator
 NGS Integrator Tool (NGS-Integrator) is a Java-based tool that integrates multiple genome-wide NGS data via the minimum Bayes' Factor from density of sequence reads mapped on the genome. To integrate multiple NGS data, homogeneous replicates or 
 heterogeneous NGS data can be integrated into the single data track based on the complements of the minimum Bayes factor (*cMBF*)
-(range: 0-1) calculated from signal-to-background ratios as a function of genomic position.
+(range: 0-1) calculated from signal-to-background noise ratios as a function of genomic position.
 
 This is **NOT** a peak-calling algorithm as it does not specifically locate peaks 
 (though you can use a peak-calling tools on the output!).
@@ -42,7 +42,7 @@ The commandline options for changing the parameters are as below:
 ```
 
 ### Run
-`java -jar NGS-IT.jar -i [Input.bed] -o [out_BaseName] -w [10000] [other options]`
+`java -jar NGS-Integrator.jar -i [Input.bed] -o [out_BaseName] -w [10000] [other options]`
 
 ### Output
 This part produces a directory of chromosome-separated BED files of the calculated cMBFs.
@@ -62,7 +62,7 @@ The inputs should be ordered as follows:
 `chr start end cMBF`
 
 ### Run
-`java -cp NGS-IT.jar Integrator [Integration_Output_File_Name.bed] [file1.bed] [file2.bed] ...`
+`java -cp NGS-Integrator.jar Integrator [Integration_Output_File_Name.bed] [file1.bed] [file2.bed] ...`
 
 ### Output
 The output will be a BED file of the same format (`chr start end cMBF`) and of the specified name.
