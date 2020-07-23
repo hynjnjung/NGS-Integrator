@@ -38,7 +38,7 @@ The commandline options for changing the parameters are as below:
 -o,--output <arg>        [opt] output file base name                            default: "out"
 -w,--windowSize <arg>    [req] window size for calculating cMBF, must be        default: 10000 (bp)
                           a multiple of interval size
--z,--defaultZero <arg>   [opt] default number to replace zero                   default: 0.5
+-z,--defaultZero <arg>   [opt] default number to replace zero                   default: 0.1
 ```
 
 ### Run
