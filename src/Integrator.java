@@ -1,5 +1,3 @@
-package nih.nhlbi.esbl.ngs;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
